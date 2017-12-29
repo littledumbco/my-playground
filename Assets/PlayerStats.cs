@@ -4,25 +4,26 @@ using System.Collections;
 
 public class PlayerStats : MonoBehaviour {
 	
-	public Text healthStatus;
+	private string healthStatus;
 	private int myHP = 500;
 	private int myEXP = 5;
+
+	// Text variables to handle conversion to UI
 	public Text uiHP;
 	public Text uiEXP;
+	public Text uiStatus;
 
 	// Use this for initialization
 	void Start () {
 
-		healthStatus.text = "Super Alive!";
-
-
 	}
 
-	// Script to transform the HP and EXP into text strings
+	// Script to transform the Stats, HP and EXP into text strings for use in UI
 	void StatUpdater () {
 
-		uiHP.text = "Health: " + myHP.ToString ();
-		uiEXP.text = "XP: " + myEXP.ToString ();
+		uiStatus.text = "<b>Status:</b> " + healthStatus;
+		uiHP.text = "<b>Health:</b> " + myHP.ToString ();
+		uiEXP.text = "<b>XP:</b> " + myEXP.ToString ();
 
 	}
 
@@ -39,9 +40,9 @@ public class PlayerStats : MonoBehaviour {
 
 
 		// Updating the health status checker with relevant status
-		if ( myHP >= 500 ) { healthStatus.text = "You're swell"; } 
-		else if ( myHP == 250 ) { healthStatus.text = "You're hurting"; } 
-		else if ( myHP <= 0 ) { healthStatus.text = "You're dead"; }
+		if ( myHP >= 500 ) { healthStatus = "You're swell"; } 
+		else if ( myHP == 250 ) { healthStatus = "You're hurting"; } 
+		else if ( myHP <= 0 ) { healthStatus = "You're dead"; }
 
 	}
 }
